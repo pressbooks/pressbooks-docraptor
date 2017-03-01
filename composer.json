@@ -1,0 +1,19 @@
+{
+    "name": "pressbooks/pressbooks-docraptor",
+    "description": "Docraptor exporter for Pressbooks.",
+    "type": "wordpress-plugin",
+    "require": {
+        "docraptor/docraptor": "^1.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^2.8",
+        "phpunit/phpunit": "^6.0"
+    },
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Pressbooks (Book Oven Inc.)",
+            "email": "code@pressbooks.com"
+        }
+    ]
+}
