@@ -5,8 +5,8 @@
  */
 namespace PressbooksDocraptor\Export;
 
-use Pressbooks\Modules\Export\Export;
-use Pressbooks\Container;
+use \Pressbooks\Modules\Export\Export;
+use \Pressbooks\Container;
 
 class DocRaptor extends Export
 {
