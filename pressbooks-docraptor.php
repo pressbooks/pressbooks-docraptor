@@ -22,10 +22,22 @@ if (! class_exists('\\PressbooksDocraptor\\Export\\Docraptor')) {
 }
 
 add_action('init', function () {
-    if (! version_compare(PB_PLUGIN_VERSION, '3.9.8', '>=')) {
+    if (! @include_once(WP_PLUGIN_DIR . '/pressbooks/compatibility.php')) {
         add_action('admin_notices', function () {
-            echo '<div id="message" class="error fade"><p>' . __('Docraptor for Pressbooks requires Pressbooks 3.9.8 or greater.', 'pressbooks-docraptor') . '</p></div>';
+            printf(
+                '<div id="message" class="error fade"><p>%s</p></div>',
+                __('Docraptor for Pressbooks cannot find a Pressbooks install.', 'pressbooks-docraptor')
+            );
         });
+        return;
+    } elseif (! version_compare(PB_PLUGIN_VERSION, '3.9.8', '>=')) {
+        add_action('admin_notices', function () {
+            printf(
+                '<div id="message" class="error fade"><p>%s</p></div>',
+                __('Docraptor for Pressbooks requires Pressbooks 3.9.8 or greater.', 'pressbooks-docraptor')
+            );
+        });
+        return;
     } else {
         require_once(dirname(__FILE__) . '/src/Actions.php');
         require_once(dirname(__FILE__) . '/src/Filters.php');
