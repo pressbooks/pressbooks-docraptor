@@ -116,10 +116,13 @@ class DocRaptor extends Export
         $docraptor = new \DocRaptor\DocApi();
 
         $doc = new \DocRaptor\Doc();
-        $doc->setTest(true);
+        if (true == WP_DEBUG) {
+            $doc->setTest(true);
+        }
         $doc->setDocumentUrl($this->url);
         // TODO Handle stylesheet $css_file
-        // TODO Handle scripts $this->exportScriptPath );
+        // TODO Handle scripts $this->exportScriptPath
+        // TODO Make async
         $create_response = $docraptor->createDoc($doc);
         $retval = fopen($this->outputPath, 'wb');
         fwrite($retval, $create_response);
