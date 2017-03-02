@@ -2,7 +2,7 @@
 
 function add_to_formats($formats)
 {
-        array_splice($formats['standard'], 2, 0, array( 'docraptor' => __('PDF (Docraptor)', 'pressbooks') ));
+    $formats['standard'] = ['docraptor' => __('PDF (Docraptor)', 'pressbooks')] + $formats['standard'];
         return $formats;
 }
 add_filter('pb_export_formats', __NAMESPACE__ . '\\add_to_formats');
