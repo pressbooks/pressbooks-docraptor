@@ -65,6 +65,8 @@ class DocraptorPrint extends Export
 
         $this->exportStylePath = $this->getExportStylePath('prince');
         $this->exportScriptPath = $this->getExportScriptPath('prince');
+        $this->pdfProfile = 'PDF/X-1a';
+        $this->pdfOutputIntent = 'pressbooks-docraptor/assets/icc/USWebCoatedSWOP.icc';
 
         // Set the access protected "format/xhtml" URL with a valid timestamp and NONCE
         $timestamp = time();
@@ -111,9 +113,18 @@ class DocraptorPrint extends Export
         $css = $this->kneadCss();
         $css_file = $this->createTmpFile();
         file_put_contents($css_file, $css);
+        add_action('pb_head', function () {
+            $uploads_dir = \Pressbooks\Utility\get_media_prefix();
+            $wp_upload_dir = wp_upload_dir();
+            $uploads_uri = trailingslashit($wp_upload_dir['baseurl']);
+            $css_uri = str_replace($uploads_dir, $uploads_uri, $css);
+            echo "<link href='$css_uri' rel='stylesheet' />";
+        });
 
         // Save PDF as file in exports folder
         $docraptor = new \DocRaptor\DocApi();
+        $prince_options = new \DocRaptor\PrinceOptions();
+        $prince_options->setProfile($this->pdfProfile);
 
         $doc = new \DocRaptor\Doc();
         if (true == WP_DEBUG) {
@@ -122,6 +133,7 @@ class DocraptorPrint extends Export
         $doc->setDocumentUrl($this->url);
         // TODO Handle stylesheet $css_file
         // TODO Handle scripts $this->exportScriptPath
+        $doc->setPrinceOptions($prince_options);
         // TODO Make async
         $create_response = $docraptor->createDoc($doc);
         $retval = fopen($this->outputPath, 'wb');
@@ -264,11 +276,23 @@ class DocraptorPrint extends Export
     protected function themeOptionsOverrides()
     {
 
-        // --------------------------------------------------------------------
-        // CSS
+
+        $sass = \Pressbooks\Container::get('Sass');
+
+        if ($sass->isCurrentThemeCompatible(2)) {
+            $extra = "/* Print Overrides */\n\$prince-image-resolution: 300dpi; \n";
+        } else {
+            $extra = "/* Print Overrides */\nimg { prince-image-resolution: 300dpi; } \n";
+        }
+
+        $icc = plugins_url($this->pdfOutputIntent);
+
+        $extra .= "@prince-pdf { prince-pdf-output-intent: url('$icc'); } \n";
 
         $scss = '';
         $scss = apply_filters('pb_pdf_css_override', $scss) . "\n";
+
+        $scss = $sass->applyOverrides($scss, $extra);
 
         // Copyright
         // Please be kind, help Pressbooks grow by leaving this on!

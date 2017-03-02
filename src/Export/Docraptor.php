@@ -65,6 +65,8 @@ class Docraptor extends Export
 
         $this->exportStylePath = $this->getExportStylePath('prince');
         $this->exportScriptPath = $this->getExportScriptPath('prince');
+        $this->pdfProfile = $this->getPdfProfile();
+        $this->pdfOutputIntent = $this->getPdfOutputIntent();
 
         // Set the access protected "format/xhtml" URL with a valid timestamp and NONCE
         $timestamp = time();
@@ -114,6 +116,8 @@ class Docraptor extends Export
 
         // Save PDF as file in exports folder
         $docraptor = new \DocRaptor\DocApi();
+        $prince_options = new \DocRaptor\PrinceOptions();
+        $prince_options->setProfile($this->pdfProfile);
 
         $doc = new \DocRaptor\Doc();
         if (true == WP_DEBUG) {
@@ -122,6 +126,7 @@ class Docraptor extends Export
         $doc->setDocumentUrl($this->url);
         // TODO Handle stylesheet $css_file
         // TODO Handle scripts $this->exportScriptPath
+        $doc->setPrinceOptions($prince_options);
         // TODO Make async
         $create_response = $docraptor->createDoc($doc);
         $retval = fopen($this->outputPath, 'wb');
