@@ -71,7 +71,7 @@ class Docraptor extends Export
         // Set the access protected "format/xhtml" URL with a valid timestamp and NONCE
         $timestamp = time();
         $md5 = $this->nonce($timestamp);
-        $this->url = home_url() . "/format/xhtml?timestamp={$timestamp}&hashkey={$md5}&style=docraptor";
+        $this->url = home_url() . "/format/xhtml?timestamp={$timestamp}&hashkey={$md5}&style=docraptor&script=prince";
 
         $this->themeOptionsOverrides();
     }
@@ -125,7 +125,6 @@ class Docraptor extends Export
             $doc->setTest(true);
         }
         $doc->setDocumentUrl($this->url);
-        // TODO Handle scripts $this->exportScriptPath
         $doc->setPrinceOptions($prince_options);
         // TODO Make async
         $create_response = $docraptor->createDoc($doc);
