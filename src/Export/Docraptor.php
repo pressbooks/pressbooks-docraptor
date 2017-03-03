@@ -7,6 +7,8 @@ namespace PressbooksDocraptor\Export;
 
 use \Pressbooks\Modules\Export\Export;
 use \Pressbooks\Container;
+use DocRaptor\Doc;
+use DocRaptor\ApiException;
 
 class Docraptor extends Export
 {
@@ -120,17 +122,39 @@ class Docraptor extends Export
         $prince_options->setProfile($this->pdfProfile);
         $prince_options->setBaseurl(home_url());
 
-        $doc = new \DocRaptor\Doc();
-        if (true == WP_DEBUG) {
-            $doc->setTest(true);
+        try {
+            $doc = new \DocRaptor\Doc();
+            if (PB_DOCRAPTOR_API_KEY == 'YOUR_API_KEY_HERE') {
+                $doc->setTest(true);
+            }
+            $doc->setDocumentUrl($this->url);
+            $doc->setPrinceOptions($prince_options);
+            $create_response = $docraptor->createAsyncDoc($doc);
+
+            $done = false;
+
+            while (!$done) {
+                $status_response = $docraptor->getAsyncDocStatus($create_response->getStatusId());
+                switch ($status_response->getStatus()) {
+                    case 'completed':
+                        $doc_response = $docraptor->getAsyncDoc($status_response->getDownloadId());
+                        $retval = fopen($this->outputPath, 'wb');
+                        fwrite($retval, $doc_response);
+                        fclose($retval);
+                        $done = true;
+                        break;
+                    case 'failed':
+                        wp_die($status_response);
+                        $done = true;
+                        break;
+                    default:
+                        sleep(1);
+                }
+            }
+        } catch (\DocRaptor\ApiException $exception) {
+            $message = "<h1>{$exception->getMessage()}</h1><p>{$exception->getCode()}</p><p>{$exception->getResponseBody()}</p>";
+            wp_die($message);
         }
-        $doc->setDocumentUrl($this->url);
-        $doc->setPrinceOptions($prince_options);
-        // TODO Make async
-        $create_response = $docraptor->createDoc($doc);
-        $retval = fopen($this->outputPath, 'wb');
-        fwrite($retval, $create_response);
-        fclose($retval);
 
         return $retval;
     }
