@@ -111,14 +111,8 @@ class Docraptor extends Export
 
         // CSS File
         $css = $this->kneadCss();
-        $css_file = $this->createTmpFile();
-        file_put_contents($css_file, $css);
         add_action('pb_head', function () {
-            $uploads_dir = \Pressbooks\Utility\get_media_prefix();
-            $wp_upload_dir = wp_upload_dir();
-            $uploads_uri = trailingslashit($wp_upload_dir['baseurl']);
-            $css_uri = str_replace($uploads_dir, $uploads_uri, $css);
-            echo "<link href='$css_uri' rel='stylesheet' />";
+            echo "<style type='text/css'>$css</style>";
         });
 
         // Save PDF as file in exports folder
@@ -131,7 +125,6 @@ class Docraptor extends Export
             $doc->setTest(true);
         }
         $doc->setDocumentUrl($this->url);
-        // TODO Handle stylesheet $css_file
         // TODO Handle scripts $this->exportScriptPath
         $doc->setPrinceOptions($prince_options);
         // TODO Make async
