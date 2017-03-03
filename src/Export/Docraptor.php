@@ -119,10 +119,10 @@ class Docraptor extends Export
 
         try {
             $doc = new \DocRaptor\Doc();
-            if (WP_ENV == 'development' || WP_ENV == 'staging') {
+            if (WP_ENV == 'production') {
                 $doc->setTest(true);
             } else {
-                $doc->setTest(false);
+                $doc->setTest(true);
             }
             $doc->setDocumentUrl($this->url);
             $doc->setPrinceOptions($prince_options);
