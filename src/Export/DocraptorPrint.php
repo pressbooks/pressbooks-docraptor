@@ -8,7 +8,7 @@ namespace PressbooksDocraptor\Export;
 use \Pressbooks\Modules\Export\Export;
 use \Pressbooks\Container;
 
-class DocraptorPrint extends Export
+class DocraptorPrint extends Docraptor
 {
 
     /**
@@ -118,6 +118,7 @@ class DocraptorPrint extends Export
         $docraptor = new \DocRaptor\DocApi();
         $prince_options = new \DocRaptor\PrinceOptions();
         $prince_options->setProfile($this->pdfProfile);
+        $prince_options->setBaseurl(home_url());
 
         $doc = new \DocRaptor\Doc();
         if (true == WP_DEBUG) {
@@ -228,32 +229,6 @@ class DocraptorPrint extends Export
             $css = static::injectHouseStyles($scss);
         }
 
-        // Search for url("*"), url('*'), and url(*)
-        $url_regex = '/url\(([\s])?([\"|\'])?(.*?)([\"|\'])?([\s])?\)/i';
-        $css = preg_replace_callback($url_regex, function ($matches) use ($scss_dir) {
-
-            $url = $matches[3];
-
-            if (preg_match('#^themes-book/pressbooks-book/fonts/[a-zA-Z0-9_-]+(\.woff|\.otf|\.ttf)$#i', $url)) {
-                $my_asset = realpath(PB_PLUGIN_DIR . $url);
-                if ($my_asset) {
-                    return 'url(' . PB_PLUGIN_DIR . $url . ')';
-                }
-            } elseif (preg_match('#^uploads/assets/fonts/[a-zA-Z0-9_-]+(\.woff|\.otf|\.ttf)$#i', $url)) {
-                $my_asset = realpath(WP_CONTENT_DIR . '/' . $url);
-                if ($my_asset) {
-                    return 'url(' . WP_CONTENT_DIR . '/' . $url . ')';
-                }
-            } elseif (! preg_match('#^https?://#i', $url)) {
-                $my_asset = realpath("$scss_dir/$url");
-                if ($my_asset) {
-                    return "url($scss_dir/$url)";
-                }
-            }
-
-            return $matches[0]; // No change
-        }, $css);
-
         if (WP_DEBUG) {
             Container::get('Sass')->debug($css, $scss, 'prince');
         }
@@ -267,7 +242,6 @@ class DocraptorPrint extends Export
      */
     protected function themeOptionsOverrides()
     {
-
 
         $sass = \Pressbooks\Container::get('Sass');
 
