@@ -71,7 +71,7 @@ class Docraptor extends Export
         // Set the access protected "format/xhtml" URL with a valid timestamp and NONCE
         $timestamp = time();
         $md5 = $this->nonce($timestamp);
-        $this->url = home_url() . "/format/xhtml?timestamp={$timestamp}&hashkey={$md5}";
+        $this->url = home_url() . "/format/xhtml?timestamp={$timestamp}&hashkey={$md5}&style=prince";
 
         $this->themeOptionsOverrides();
     }
@@ -109,11 +109,10 @@ class Docraptor extends Export
         // Fonts
         Container::get('GlobalTypography')->getFonts();
 
-        // CSS File
+        // CSS
         $css = $this->kneadCss();
-        add_action('pb_head', function () {
-            echo "<style type='text/css'>$css</style>";
-        });
+        $css_file = \Pressbooks\Container::get('Sass')->pathToUserGeneratedCss() . '/prince.css';
+        file_put_contents($css_file, $css);
 
         // Save PDF as file in exports folder
         $docraptor = new \DocRaptor\DocApi();
