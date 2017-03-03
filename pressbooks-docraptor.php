@@ -8,6 +8,8 @@ Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
 Text Domain: pressbooks-docraptor
 License: GPLv2
+GitHub Plugin URI: https://github.com/pressbooks/pressbooks-docraptor
+Release Asset: true
 */
 
 if (! class_exists('\\PressbooksDocraptor\\Export\\Docraptor')) {
