@@ -60,11 +60,6 @@ class Docraptor extends Export
     {
 
         // Some defaults
-
-        if (! defined('PB_DOCRAPTOR_API_KEY')) {
-            define('PB_DOCRAPTOR_API_KEY', 'YOUR_API_KEY_HERE');
-        }
-
         $this->exportStylePath = $this->getExportStylePath('prince');
         $this->exportScriptPath = $this->getExportScriptPath('prince');
         $this->pdfProfile = $this->getPdfProfile();
@@ -124,7 +119,7 @@ class Docraptor extends Export
 
         try {
             $doc = new \DocRaptor\Doc();
-            if (PB_DOCRAPTOR_API_KEY == 'YOUR_API_KEY_HERE') {
+            if (WP_ENV == 'development' || WP_ENV == 'staging') {
                 $doc->setTest(true);
             }
             $doc->setDocumentUrl($this->url);
