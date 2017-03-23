@@ -12,7 +12,7 @@ GitHub Plugin URI: https://github.com/pressbooks/pressbooks-docraptor
 Release Asset: true
 */
 
-if (! class_exists('\\Docraptor\\Doc')) {
+if (! class_exists('\\DocRaptor\\Doc')) {
     if (file_exists($autoloader = dirname(__FILE__) . '/vendor/autoload.php')) {
         require_once($autoloader);
     } else {
