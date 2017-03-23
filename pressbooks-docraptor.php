@@ -12,7 +12,7 @@ GitHub Plugin URI: https://github.com/pressbooks/pressbooks-docraptor
 Release Asset: true
 */
 
-if (! class_exists('\\PressbooksDocraptor\\Export\\Docraptor')) {
+if (! class_exists('\\Docraptor\\Doc')) {
     if (file_exists($autoloader = dirname(__FILE__) . '/vendor/autoload.php')) {
         require_once($autoloader);
     } else {
@@ -22,6 +22,29 @@ if (! class_exists('\\PressbooksDocraptor\\Export\\Docraptor')) {
         wp_die($message, $title);
     }
 }
+
+// -------------------------------------------------------------------------------------------------------------------
+// Class autoloader
+// -------------------------------------------------------------------------------------------------------------------
+
+function _pressbooks_docraptor_autoload($class_name)
+{
+
+    $prefix = 'PressbooksDocraptor\\';
+    $len = strlen($prefix);
+    if (strncasecmp($prefix, $class_name, $len) !== 0) {
+        // Ignore classes not in our namespace
+        return;
+    }
+
+    $parts = explode('\\', strtolower($class_name));
+    array_shift($parts);
+    $class_file = 'class-pb-' . str_replace('_', '-', array_pop($parts)) . '.php';
+    $path = count($parts) ? implode('/', $parts) . '/' : '';
+    @include(dirname(__FILE__) . '/includes/' . $path . $class_file);
+}
+
+spl_autoload_register('_pressbooks_docraptor_autoload');
 
 add_action('init', function () {
     if (! @include_once(WP_PLUGIN_DIR . '/pressbooks/compatibility.php')) {
@@ -41,6 +64,6 @@ add_action('init', function () {
         });
         return;
     } else {
-        require_once(dirname(__FILE__) . '/src/Filters.php');
+        require_once(dirname(__FILE__) . '/includes/pb-filters.php');
     }
 });

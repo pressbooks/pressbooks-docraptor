@@ -34,10 +34,10 @@ add_filter('pb_export_formats', __NAMESPACE__ . '\\add_to_formats');
 function add_to_modules($modules)
 {
     if (isset($_POST['export_formats']['docraptor'])) {
-        $modules[] = '\PressbooksDocraptor\Export\Docraptor';
+        $modules[] = '\PressbooksDocraptor\Modules\Export\Docraptor\Docraptor';
     }
     if (isset($_POST['export_formats']['docraptor_print'])) {
-        $modules[] = '\PressbooksDocraptor\Export\DocraptorPrint';
+        $modules[] = '\PressbooksDocraptor\Modules\Export\Docraptor\DocraptorPrint';
     }
     return $modules;
 }
