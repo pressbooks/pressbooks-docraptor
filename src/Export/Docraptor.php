@@ -120,7 +120,7 @@ class Docraptor extends Export
         try {
             $doc = new \DocRaptor\Doc();
             if (WP_ENV == 'production') {
-                $doc->setTest(true);
+                $doc->setTest(false);
             } else {
                 $doc->setTest(true);
             }
