@@ -90,7 +90,7 @@ class DocraptorPrint extends Docraptor
             $extra = "/* Print Overrides */\nimg { prince-image-resolution: 300dpi; } \n";
         }
 
-        $icc = plugins_url($this->pdfOutputIntent);
+        $icc = $this->pdfOutputIntent;
 
         $extra .= "@prince-pdf { prince-pdf-output-intent: url('$icc'); } \n";
 
