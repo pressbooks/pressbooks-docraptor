@@ -8,7 +8,7 @@ This plugin implements a [Docraptor](https://docraptor.com/) export module for P
 
 * PHP >= 5.6
 * Pressbooks >= 3.9.8
-* WordPress >= 4.7.2
+* WordPress >= 4.7.3
 
 ## Usage
 
