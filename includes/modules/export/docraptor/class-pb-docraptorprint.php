@@ -3,7 +3,7 @@
  * @author  Pressbooks <code@pressbooks.com>
  * @license GPLv2 (or any later version))
  */
-namespace PressbooksDocraptor\Modules\Export;
+namespace PressbooksDocraptor\Modules\Export\Docraptor;
 
 use \Pressbooks\Modules\Export\Export;
 use \Pressbooks\Container;
