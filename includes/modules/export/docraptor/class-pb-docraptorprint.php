@@ -65,7 +65,7 @@ class DocraptorPrint extends Docraptor
 
         $this->exportStylePath = $this->getExportStylePath('prince');
         $this->exportScriptPath = $this->getExportScriptPath('prince');
-        $this->pdfProfile = 'PDF/X-1a';
+        $this->pdfProfile = 'PDF/X-1a:2003';
         $this->pdfOutputIntent = plugins_url('pressbooks-docraptor/assets/icc/USWebCoatedSWOP.icc');
 
         // Set the access protected "format/xhtml" URL with a valid timestamp and NONCE

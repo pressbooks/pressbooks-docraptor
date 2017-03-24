@@ -115,7 +115,6 @@ class Docraptor extends Export
         $docraptor = new \DocRaptor\DocApi();
         $prince_options = new \DocRaptor\PrinceOptions();
         $prince_options->setProfile($this->pdfProfile);
-        $prince_options->setBaseurl(home_url());
 
         try {
             $doc = new \DocRaptor\Doc();
