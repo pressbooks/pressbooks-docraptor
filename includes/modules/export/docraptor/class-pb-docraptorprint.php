@@ -77,6 +77,87 @@ class DocraptorPrint extends Docraptor
     }
 
     /**
+     * Create $this->outputPath
+     *
+     * @return bool
+     */
+    public function convert()
+    {
+
+        // Sanity check
+
+        if (empty($this->exportStylePath) || ! is_file($this->exportStylePath)) {
+            $this->logError('$this->exportStylePath must be set before calling convert().');
+
+            return false;
+        }
+
+        // Configure service
+        $configuration = \DocRaptor\Configuration::getDefaultConfiguration();
+        if (defined('PB_DOCRAPTOR_API_KEY')) {
+            $configuration->setUsername(PB_DOCRAPTOR_API_KEY);
+        }
+
+        // Set logfile
+        $this->logfile = $this->createTmpFile();
+
+        // Set filename
+        $filename = $this->timestampedFileName('._print.pdf');
+        $this->outputPath = $filename;
+
+        // Fonts
+        Container::get('GlobalTypography')->getFonts();
+
+        // CSS
+        $css = $this->kneadCss();
+        $css_file = \Pressbooks\Container::get('Sass')->pathToUserGeneratedCss() . '/docraptor.css';
+        file_put_contents($css_file, $css);
+
+        // Save PDF as file in exports folder
+        $docraptor = new \DocRaptor\DocApi();
+        $prince_options = new \DocRaptor\PrinceOptions();
+        $prince_options->setProfile($this->pdfProfile);
+
+        try {
+            $doc = new \DocRaptor\Doc();
+            if (WP_ENV == 'production') {
+                $doc->setTest(false);
+            } else {
+                $doc->setTest(true);
+            }
+            $doc->setDocumentUrl($this->url);
+            $doc->setPrinceOptions($prince_options);
+            $create_response = $docraptor->createAsyncDoc($doc);
+
+            $done = false;
+
+            while (!$done) {
+                $status_response = $docraptor->getAsyncDocStatus($create_response->getStatusId());
+                switch ($status_response->getStatus()) {
+                    case 'completed':
+                        $doc_response = $docraptor->getAsyncDoc($status_response->getDownloadId());
+                        $retval = fopen($this->outputPath, 'wb');
+                        fwrite($retval, $doc_response);
+                        fclose($retval);
+                        $done = true;
+                        break;
+                    case 'failed':
+                        wp_die($status_response);
+                        $done = true;
+                        break;
+                    default:
+                        sleep(1);
+                }
+            }
+        } catch (\DocRaptor\ApiException $exception) {
+            $message = "<h1>{$exception->getMessage()}</h1><p>{$exception->getCode()}</p><p>{$exception->getResponseBody()}</p>";
+            wp_die($message);
+        }
+
+        return $retval;
+    }
+
+    /**
      * Override based on Theme Options
      */
     protected function themeOptionsOverrides()
