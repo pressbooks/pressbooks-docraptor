@@ -126,6 +126,7 @@ class DocraptorPrint extends Docraptor
                 $doc->setTest(true);
             }
             $doc->setDocumentUrl($this->url);
+            $doc->setName(get_bloginfo('name'));
             $doc->setPrinceOptions($prince_options);
             $create_response = $docraptor->createAsyncDoc($doc);
 
