@@ -12,9 +12,9 @@ This plugin implements a [Docraptor](https://docraptor.com/) export module for P
 
 ## Usage
 
-Set the constant `PB_DOCRAPTOR_API_KEY` to your [API key](https://docraptor.com/documentation/api#api_authentication) for authenticated usage:
+Set the constant `DOCRAPTOR_API_KEY` to your [API key](https://docraptor.com/documentation/api#api_authentication) for authenticated usage:
 
-```define('PB_DOCRAPTOR_API_KEY', 'YOUR_API_KEY');```
+```define('DOCRAPTOR_API_KEY', 'YOUR_API_KEY');```
 
 Set the constant `WP_ENV` to `production` to disable [test mode](https://docraptor.com/documentation/api#api_test_docs):
 
