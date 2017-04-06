@@ -3,7 +3,8 @@
   <description>Pressbooks Coding Standards</description>
 
 	<!-- Exclude vendor -->
-	<exclude-pattern>vendor/</exclude-pattern>
+	<exclude-pattern>test/</exclude-pattern>
+  <exclude-pattern>vendor/</exclude-pattern>
 
   <!-- Show colors in console -->
   <arg value="-colors"/>
