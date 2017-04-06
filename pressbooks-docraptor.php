@@ -3,7 +3,7 @@
 Plugin Name: Docraptor for Pressbooks
 Plugin URI: https://pressbooks.org
 Description: Docraptor exporter for Pressbooks.
-Version: 1.0.0-RC4
+Version: 1.0.0
 Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
 Text Domain: pressbooks-docraptor
@@ -17,7 +17,10 @@ if (! class_exists('\\DocRaptor\\Doc')) {
         require_once($autoloader);
     } else {
         $title = __('Dependencies Missing', 'pressbooks-docraptor');
-        $body = __('Please run <code>composer install</code> from the root of the Docraptor for Pressbooks plugin directory.', 'pressbooks-docraptor');
+        $body = __(
+            'Please run <code>composer install</code> from the root of the Docraptor for Pressbooks plugin directory.',
+            'pressbooks-docraptor'
+        );
         $message = "<h1>{$title}</h1><p>{$body}</p>";
         wp_die($message, $title);
     }
