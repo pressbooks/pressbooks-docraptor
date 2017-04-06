@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "48b74ec63cdc675da6e01558541c3650",
+    "content-hash": "83b7fd512efeff83faf2bc6893cf2903",
     "packages": [
         {
             "name": "composer/installers",
@@ -1558,42 +1558,6 @@
                 "validate"
             ],
             "time": "2016-11-23T20:04:58+00:00"
-        },
-        {
-            "name": "wp-coding-standards/wpcs",
-            "version": "0.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards.git",
-                "reference": "b39490465f6fd7375743a395019cd597e12119c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/WordPress-Coding-Standards/WordPress-Coding-Standards/zipball/b39490465f6fd7375743a395019cd597e12119c9",
-                "reference": "b39490465f6fd7375743a395019cd597e12119c9",
-                "shasum": ""
-            },
-            "require": {
-                "squizlabs/php_codesniffer": "^2.6"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/graphs/contributors"
-                }
-            ],
-            "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
-            "keywords": [
-                "phpcs",
-                "standards",
-                "wordpress"
-            ],
-            "time": "2016-08-29T20:04:47+00:00"
         }
     ],
     "aliases": [],

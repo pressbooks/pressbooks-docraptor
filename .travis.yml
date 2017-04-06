@@ -7,7 +7,7 @@ notifications:
 
 branches:
   only:
-    - dev
+    - master
 
 php:
   - 5.6
@@ -17,14 +17,19 @@ php:
 env:
   - WP_VERSION=latest WP_MULTISITE=1
 
-before_install:
-  - composer install
-
 before_script:
   - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+  - export PATH="$HOME/.composer/vendor/bin:$PATH"
+  - |
+    if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
+      composer global require "phpunit/phpunit=5.6.*"
+    else
+      composer global require "phpunit/phpunit=4.8.*"
+    fi
+  - |
+    composer global require wp-coding-standards/wpcs
+    phpcs --config-set installed_paths $HOME/.composer/vendor/wp-coding-standards/wpcs
 
 script:
-  - composer test
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - phpcs --standard=phpcs.xml $(find . -name '*.php')
+  - phpunit

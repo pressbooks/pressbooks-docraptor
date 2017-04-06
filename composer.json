@@ -8,9 +8,7 @@
     },
     "require-dev": {
       "phpunit/phpunit": "~5.5",
-      "squizlabs/php_codesniffer": "^2.7",
-      "wp-coding-standards/wpcs": "^0.10",
-      "pressbooks/pressbooks": "dev-dev"
+      "squizlabs/php_codesniffer": "^2.7"
     },
     "scripts": {
       "test": [
