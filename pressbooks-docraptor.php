@@ -46,6 +46,8 @@ function _pressbooks_docraptor_autoload($class_name)
 
 spl_autoload_register('_pressbooks_docraptor_autoload');
 
+// Initialize
+
 add_action('init', function () {
     if (! @include_once(WP_PLUGIN_DIR . '/pressbooks/compatibility.php')) {
         add_action('admin_notices', function () {

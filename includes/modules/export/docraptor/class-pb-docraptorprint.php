@@ -14,7 +14,7 @@ class DocraptorPrint extends Docraptor
 {
 
     /**
-     * Service URL
+     * Service URL.
      *
      * @var string
      */
@@ -22,7 +22,7 @@ class DocraptorPrint extends Docraptor
 
 
     /**
-     * File extension
+     * File extension.
      *
      * @var string
      */
@@ -30,7 +30,7 @@ class DocraptorPrint extends Docraptor
 
 
     /**
-     * Fullpath to log file used for Docraptor generation log
+     * Full path to the DocRaptor generation log file.
      *
      * @var string
      */
@@ -38,7 +38,7 @@ class DocraptorPrint extends Docraptor
 
 
     /**
-     * Fullpath to book CSS file.
+     * Full path to the book's CSS file.
      *
      * @var string
      */
@@ -46,7 +46,7 @@ class DocraptorPrint extends Docraptor
 
 
     /**
-     * Fullpath to book JavaScript file.
+     * Fullpath to the book's JavaScript file.
      *
      * @var string
      */
@@ -54,7 +54,7 @@ class DocraptorPrint extends Docraptor
 
 
     /**
-     * CSS overrides
+     * CSS overrides.
      *
      * @var string
      */
@@ -62,6 +62,8 @@ class DocraptorPrint extends Docraptor
 
 
     /**
+     * Constructor.
+     *
      * @param array $args
      */
     public function __construct(array $args)
@@ -87,23 +89,38 @@ class DocraptorPrint extends Docraptor
         $this->themeOptionsOverrides();
     }
 
+    /**
+     * Return the output file extension.
+     *
+     * @return string
+     */
     protected function getFileExtension()
     {
         return '._print.pdf';
     }
 
+    /**
+     * Return the desired PDF profile.
+     *
+     * @return string
+     */
     protected function getPdfProfile()
     {
         return 'PDF/X-1a:2003';
     }
 
+    /**
+     * Return the desired PDF output intent.
+     *
+     * @return string
+     */
     protected function getPdfOutputIntent()
     {
         return plugins_url('pressbooks-docraptor/assets/icc/USWebCoatedSWOP.icc');
     }
 
     /**
-     * Override based on Theme Options
+    * Override based on Theme Options.
      */
     protected function themeOptionsOverrides()
     {
@@ -125,11 +142,16 @@ class DocraptorPrint extends Docraptor
 
         $scss = $sass->applyOverrides($scss, $extra);
 
-        // Copyright
         // Please be kind, help Pressbooks grow by leaving this on!
         if (empty($GLOBALS['PB_SECRET_SAUCE']['TURN_OFF_FREEBIE_NOTICES_PDF'])) {
-            $freebie_notice = __('This book was produced using Pressbooks.com, and PDF rendering was done by PrinceXML.', 'pressbooks');
-            $scss .= '#copyright-page .ugc > p:last-of-type::after { display:block; margin-top: 1em; content: "' . $freebie_notice . '" }' . "\n";
+            $freebie_notice = __(
+                'This book was produced using Pressbooks, with PDF rendering by DocRaptor.',
+                'pressbooks-docraptor'
+            );
+            $scss .= sprintf(
+                "#copyright-page .ugc > p:last-of-type::after { display:block; margin-top: 1em; content: '%s'; }\n",
+                $freebie_notice
+            );
         }
 
         $this->cssOverrides = $scss;

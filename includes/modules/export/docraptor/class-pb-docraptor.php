@@ -14,7 +14,7 @@ class Docraptor extends Export
 {
 
     /**
-     * Service URL
+     * Service URL.
      *
      * @var string
      */
@@ -22,7 +22,7 @@ class Docraptor extends Export
 
 
     /**
-     * File extension
+     * File extension.
      *
      * @var string
      */
@@ -30,7 +30,7 @@ class Docraptor extends Export
 
 
     /**
-     * Fullpath to log file used for Docraptor generation log
+     * Full path to the DocRaptor generation log file.
      *
      * @var string
      */
@@ -38,7 +38,7 @@ class Docraptor extends Export
 
 
     /**
-     * Fullpath to book CSS file.
+     * Full path to the book's CSS file.
      *
      * @var string
      */
@@ -46,7 +46,7 @@ class Docraptor extends Export
 
 
     /**
-     * Fullpath to book JavaScript file.
+     * Full path to book's JavaScript file.
      *
      * @var string
      */
@@ -54,7 +54,7 @@ class Docraptor extends Export
 
 
     /**
-     * CSS overrides
+     * CSS overrides.
      *
      * @var string
      */
@@ -62,13 +62,14 @@ class Docraptor extends Export
 
 
     /**
+     * Constructor.
+     *
      * @param array $args
      */
     public function __construct(array $args)
     {
 
         // Some defaults
-
         if (! defined('DOCRAPTOR_API_KEY')) {
             define('DOCRAPTOR_API_KEY', 'YOUR_API_KEY_HERE');
         }
@@ -89,9 +90,9 @@ class Docraptor extends Export
 
 
     /**
-     * Create $this->outputPath
+     * Create $this->outputPath.
      *
-     * @return bool
+     * @return bool|string
      */
     public function convert()
     {
@@ -156,13 +157,16 @@ class Docraptor extends Export
                     case 'failed':
                         file_put_contents($this->logfile, $status_response);
                         $done = true;
+                        $retval = false;
                         break;
                     default:
                         sleep(1);
                 }
             }
         } catch (\DocRaptor\ApiException $exception) {
-            $message = "<h1>{$exception->getMessage()}</h1><p>{$exception->getCode()}</p><p>{$exception->getResponseBody()}</p>";
+            $message = "<h1>{$exception->getMessage()}</h1>\n
+            <p>{$exception->getCode()}</p>\n
+            <p>{$exception->getResponseBody()}</p>";
             wp_die($message);
         }
 
@@ -210,7 +214,7 @@ class Docraptor extends Export
 
 
     /**
-     * Verify if body is actual PDF
+     * Verify if body is actual PDF.
      *
      * @param string $file
      *
@@ -224,6 +228,13 @@ class Docraptor extends Export
         return ( strpos($mime, 'application/pdf') !== false );
     }
 
+    /**
+     * When given a DocRaptor async status ID, return the document generation log for the relevant job.
+     *
+     * @param string $id
+     *
+     * @return string
+     */
     protected function getDetailedLog($id)
     {
         $response = wp_remote_get(esc_url('https://docraptor.com/doc_logs.json?user_credentials=' . DOCRAPTOR_API_KEY));
@@ -237,11 +248,21 @@ class Docraptor extends Export
         return false;
     }
 
+    /**
+     * Return the output file extension.
+     *
+     * @return string
+     */
     protected function getFileExtension()
     {
         return '.pdf';
     }
 
+    /**
+     * Return the desired PDF profile.
+     *
+     * @return string
+     */
     protected function getPdfProfile()
     {
         if (defined('PB_PDF_PROFILE')) {
@@ -250,6 +271,11 @@ class Docraptor extends Export
         return null;
     }
 
+    /**
+     * Return the desired PDF output intent.
+     *
+     * @return string
+     */
     protected function getPdfOutputIntent()
     {
         if (defined('PB_PDF_OUTPUT_INTENT')) {
@@ -259,7 +285,7 @@ class Docraptor extends Export
     }
 
     /**
-     * Return kneaded CSS string
+     * Return kneaded CSS string.
      *
      * @return string
      */
@@ -319,7 +345,7 @@ class Docraptor extends Export
 
 
     /**
-     * Override based on Theme Options
+     * Override based on Theme Options.
      */
     protected function themeOptionsOverrides()
     {
@@ -330,11 +356,16 @@ class Docraptor extends Export
         $scss = '';
         $scss = apply_filters('pb_pdf_css_override', $scss) . "\n";
 
-        // Copyright
         // Please be kind, help Pressbooks grow by leaving this on!
         if (empty($GLOBALS['PB_SECRET_SAUCE']['TURN_OFF_FREEBIE_NOTICES_PDF'])) {
-            $freebie_notice = __('This book was produced using Pressbooks.com, and PDF rendering was done by PrinceXML.', 'pressbooks');
-            $scss .= '#copyright-page .ugc > p:last-of-type::after { display:block; margin-top: 1em; content: "' . $freebie_notice . '" }' . "\n";
+            $freebie_notice = __(
+                'This book was produced using Pressbooks, with PDF rendering by DocRaptor.',
+                'pressbooks-docraptor'
+            );
+            $scss .= sprintf(
+                "#copyright-page .ugc > p:last-of-type::after { display:block; margin-top: 1em; content: '%s'; }\n",
+                $freebie_notice
+            );
         }
 
         $this->cssOverrides = $scss;
@@ -359,6 +390,10 @@ class Docraptor extends Export
      */
     public static function hasDependencies()
     {
-        return true;
+        if (false !== \Pressbooks\Utility\check_xmllint_install()) {
+            return true;
+        }
+
+        return false;
     }
 }
