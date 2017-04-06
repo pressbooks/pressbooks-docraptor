@@ -22,7 +22,15 @@ class Docraptor extends Export
 
 
     /**
-     * Fullpath to log file used by Prince.
+     * File extension
+     *
+     * @var string
+     */
+    public $fileExtension;
+
+
+    /**
+     * Fullpath to log file used for Docraptor generation log
      *
      * @var string
      */
@@ -60,8 +68,14 @@ class Docraptor extends Export
     {
 
         // Some defaults
+
+        if (! defined('DOCRAPTOR_API_KEY')) {
+            define('DOCRAPTOR_API_KEY', 'YOUR_API_KEY_HERE');
+        }
+
         $this->exportStylePath = $this->getExportStylePath('prince');
         $this->exportScriptPath = $this->getExportScriptPath('prince');
+        $this->fileExtension = $this->getFileExtension();
         $this->pdfProfile = $this->getPdfProfile();
         $this->pdfOutputIntent = $this->getPdfOutputIntent();
 
@@ -92,15 +106,13 @@ class Docraptor extends Export
 
         // Configure service
         $configuration = \DocRaptor\Configuration::getDefaultConfiguration();
-        if (defined('PB_DOCRAPTOR_API_KEY')) {
-            $configuration->setUsername(PB_DOCRAPTOR_API_KEY);
-        }
+        $configuration->setUsername(DOCRAPTOR_API_KEY);
 
         // Set logfile
         $this->logfile = $this->createTmpFile();
 
         // Set filename
-        $filename = $this->timestampedFileName('.pdf');
+        $filename = $this->timestampedFileName($this->fileExtension);
         $this->outputPath = $filename;
 
         // Fonts
@@ -127,7 +139,6 @@ class Docraptor extends Export
             $doc->setName(get_bloginfo('name'));
             $doc->setPrinceOptions($prince_options);
             $create_response = $docraptor->createAsyncDoc($doc);
-
             $done = false;
 
             while (!$done) {
@@ -139,9 +150,11 @@ class Docraptor extends Export
                         fwrite($retval, $doc_response);
                         fclose($retval);
                         $done = true;
+                        $msg = $this->getDetailedLog($create_response->getStatusId());
+                        file_put_contents($this->logfile, $this->getDetailedLog($create_response->getStatusId()));
                         break;
                     case 'failed':
-                        wp_die($status_response);
+                        file_put_contents($this->logfile, $status_response);
                         $done = true;
                         break;
                     default:
@@ -151,6 +164,10 @@ class Docraptor extends Export
         } catch (\DocRaptor\ApiException $exception) {
             $message = "<h1>{$exception->getMessage()}</h1><p>{$exception->getCode()}</p><p>{$exception->getResponseBody()}</p>";
             wp_die($message);
+        }
+
+        if ($msg) {
+            $this->logError(file_get_contents($this->logfile));
         }
 
         return $retval;
@@ -205,6 +222,24 @@ class Docraptor extends Export
         $mime = static::mimeType($file);
 
         return ( strpos($mime, 'application/pdf') !== false );
+    }
+
+    protected function getDetailedLog($id)
+    {
+        $response = wp_remote_get(esc_url('https://docraptor.com/doc_logs.json?user_credentials=' . DOCRAPTOR_API_KEY));
+        $logs = json_decode($response['body']);
+        foreach ($logs as $log) {
+            if ($log->status_id == $id) {
+                return $log->generation_log;
+            }
+        }
+
+        return false;
+    }
+
+    protected function getFileExtension()
+    {
+        return '.pdf';
     }
 
     protected function getPdfProfile()
