@@ -390,9 +390,9 @@ class Docraptor extends Export
      */
     public static function hasDependencies()
     {
-        if (false !== \Pressbooks\Utility\check_xmllint_install()) {
-            return true;
-        }
+        // if (false !== \Pressbooks\Utility\check_xmllint_install()) {
+        //     return true;
+        // }
 
         return false;
     }
