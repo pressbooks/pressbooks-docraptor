@@ -18,7 +18,7 @@ require_once $_tests_dir . '/includes/functions.php';
  */
 function _manually_load_plugin()
 {
-    require dirname(dirname(__FILE__)) . '/wp-content/plugins/pressbooks/pressbooks.php';
+    require dirname(dirname(__FILE__)) . '/vendor/pressbooks/pressbooks/pressbooks.php';
     require dirname(dirname(__FILE__)) . '/pressbooks-docraptor.php';
 }
 tests_add_filter('muplugins_loaded', '_manually_load_plugin');
