@@ -1,6 +1,7 @@
 # Docraptor for Pressbooks
 
 [![Packagist](https://img.shields.io/packagist/v/pressbooks/pressbooks-docraptor.svg?style=flat-square)](https://packagist.org/packages/pressbooks/pressbooks-docraptor) [![GitHub release](https://img.shields.io/github/release/pressbooks/pressbooks-docraptor.svg?style=flat-square)](https://github.com/pressbooks/pressbooks-docraptor/releases) [![Travis](https://img.shields.io/travis/pressbooks/pressbooks-docraptor.svg?style=flat-square)](https://travis-ci.org/pressbooks/pressbooks-docraptor/)
+[![codecov](https://codecov.io/gh/pressbooks/pressbooks-docraptor/branch/dev/graph/badge.svg?style=flat-square)](https://codecov.io/gh/pressbooks/pressbooks-docraptor)
 
 This plugin implements a [Docraptor](https://docraptor.com/) export module for Pressbooks.
 
