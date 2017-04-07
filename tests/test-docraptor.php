@@ -16,6 +16,7 @@ class DocraptorTest extends WP_UnitTestCase // @codingStandardsIgnoreLine
      */
     public function testHasDependencies()
     {
-        $this->assertEquals(\PressbooksDocraptor\Modules\Export\Docraptor\Docraptor::hasDependencies(), false);
+        $return = \PressbooksDocraptor\Modules\Export\Docraptor\Docraptor::hasDependencies();
+        $this->assertInternalType('boolean', $return);
     }
 }
