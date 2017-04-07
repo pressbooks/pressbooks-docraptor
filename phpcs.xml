@@ -14,4 +14,11 @@
 
   <!-- Use PSR-2 as a base -->
   <rule ref="PSR2"/>
+
+  <!-- Ignore indentation rules -->
+  <rule ref="PSR1.Files.SideEffects.FoundWithSymbols">
+    <exclude-pattern>pressbooks-docraptor.php</exclude-pattern>
+    <exclude-pattern>includes/pb-filters.php</exclude-pattern>
+  </rule>
+
 </ruleset>

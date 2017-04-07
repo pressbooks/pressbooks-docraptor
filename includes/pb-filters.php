@@ -23,7 +23,7 @@ function add_to_formats($formats)
 
     return $formats;
 }
-add_filter('pb_export_formats', __NAMESPACE__ . '\\add_to_formats');
+add_filter('pb_export_formats', 'PressbooksDocraptor\Filters\add_to_formats');
 
 /**
  * Hide Prince dependency errors if DocRaptor is enabled.
@@ -38,7 +38,7 @@ function hide_prince_errors($dependency_errors)
 
     return $dependency_errors;
 }
-add_filter('pb_dependency_errors', __NAMESPACE__ . '\\hide_prince_errors');
+add_filter('pb_dependency_errors', 'PressbooksDocraptor\Filters\hide_prince_errors');
 
 /**
  * Make sure the PDF options tab is shown even if Prince is not installed.
@@ -56,7 +56,7 @@ function register_pdf_options_tab($tabs)
 
     return array_merge($tmp, $tabs);
 }
-add_filter('pb_theme_options_tabs', __NAMESPACE__ . '\\register_pdf_options_tab');
+add_filter('pb_theme_options_tabs', 'PressbooksDocraptor\Filters\register_pdf_options_tab');
 
 /**
  * Add this module to the export batch currently in progress.
@@ -74,4 +74,4 @@ function add_to_modules($modules)
     }
     return $modules;
 }
-add_filter('pb_active_export_modules', __NAMESPACE__ . '\\add_to_modules');
+add_filter('pb_active_export_modules', 'PressbooksDocraptor\Filters\add_to_modules');
