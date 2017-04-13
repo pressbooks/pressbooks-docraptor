@@ -131,10 +131,10 @@ class Docraptor extends Export
 
         try {
             $doc = new \DocRaptor\Doc();
-            if (WP_ENV == 'production') {
-                $doc->setTest(false);
-            } else {
+            if (WP_ENV == 'development') {
                 $doc->setTest(true);
+            } else {
+                $doc->setTest(false);
             }
             $doc->setDocumentUrl($this->url);
             $doc->setName(get_bloginfo('name'));
