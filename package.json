@@ -9,6 +9,6 @@
   },
   "scripts": {
     "readme": "grunt readme",
-    "localize": "grunt i18n"
+    "localize": "composer install --no-dev && grunt i18n"
   }
 }
