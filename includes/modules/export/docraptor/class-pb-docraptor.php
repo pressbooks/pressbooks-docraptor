@@ -159,10 +159,11 @@ class Docraptor extends Export
                         } else {
                             copy($result, $this->outputPath);
                             unlink($result);
+                            $retval = $this->outputPath;
                         }
                         $done = true;
                         $msg = $this->getDetailedLog($create_response->getStatusId());
-                        file_put_contents($this->logfile, $this->getDetailedLog($create_response->getStatusId()));
+                        file_put_contents($this->logfile, $msg);
                         break;
                     case 'failed':
                         file_put_contents($this->logfile, $status_response);
@@ -174,10 +175,8 @@ class Docraptor extends Export
                 }
             }
         } catch (\DocRaptor\ApiException $exception) {
-            $message = "<h1>{$exception->getMessage()}</h1>\n
-            <p>{$exception->getCode()}</p>\n
-            <p>{$exception->getResponseBody()}</p>";
-            wp_die($message);
+            $msg = $exception->getResponseBody();
+            file_put_contents($this->logfile, $msg);
         }
 
         if ($msg) {
