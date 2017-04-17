@@ -149,10 +149,16 @@ class Docraptor extends Export
                 $status_response = $docraptor->getAsyncDocStatus($create_response->getStatusId());
                 switch ($status_response->getStatus()) {
                     case 'completed':
-                        $doc_response = $docraptor->getAsyncDoc($status_response->getDownloadId());
-                        $retval = fopen($this->outputPath, 'wb');
-                        fwrite($retval, $doc_response);
-                        fclose($retval);
+                        if (!function_exists('download_url')) {
+                            require_once(ABSPATH . 'wp-admin/includes/file.php');
+                        }
+                        $result = \download_url($status_response->getDownloadUrl());
+                        if (is_wp_error($result)) {
+                            $_SESSION['pb_errors'][] = __('Your PDF could not be retrieved.', 'pressbooks-docraptor');
+                            $retval = false;
+                        } else {
+                            rename($result, $this->outputPath);
+                        }
                         $done = true;
                         $msg = $this->getDetailedLog($create_response->getStatusId());
                         file_put_contents($this->logfile, $this->getDetailedLog($create_response->getStatusId()));
