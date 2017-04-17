@@ -16,13 +16,13 @@ This plugin implements a [DocRaptor](https://docraptor.com/) export module for [
 
 ## Installation ##
 
-# Requirements #
+### Requirements ###
 
 * PHP >= 5.6
 * Pressbooks >= 3.9.8
 * WordPress >= 4.7.3
 
-# Installing #
+### Installing ###
 
 To install via [Composer](https://getcomposer.org) (recommended):
 
@@ -38,7 +38,7 @@ Set the constant `WP_ENV` to `staging` or `production` to disable [test mode](ht
 
 ```define(\'WP_ENV\', \'production\');```
 
-# Updating #
+### Updating ###
 
 Docraptor for Pressbooks supports [Github Updater](https://github.com/afragen/github-updater).
 
