@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2.
 msgid ""
 msgstr ""
-"Project-Id-Version: Docraptor for Pressbooks 1.2.0-dev\n"
+"Project-Id-Version: Docraptor for Pressbooks 1.2.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/pressbooks-docraptor\n"
-"POT-Creation-Date: 2017-04-17 15:58:00+00:00\n"
+"POT-Creation-Date: 2017-04-17 18:16:49+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,11 @@ msgstr ""
 "X-Poedit-Bookmarks: \n"
 "X-Textdomain-Support: yes\n"
 
-#: includes/modules/export/docraptor/class-pb-docraptor.php:361
+#: includes/modules/export/docraptor/class-pb-docraptor.php:157
+msgid "Your PDF could not be retrieved."
+msgstr ""
+
+#: includes/modules/export/docraptor/class-pb-docraptor.php:370
 #: includes/modules/export/docraptor/class-pb-docraptorprint.php:147
 msgid "This book was produced using Pressbooks, with PDF rendering by DocRaptor."
 msgstr ""
