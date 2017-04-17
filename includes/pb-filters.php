@@ -14,8 +14,8 @@ namespace PressbooksDocraptor\Filters;
 function add_to_formats($formats)
 {
     $formats['standard'] = [
-        'docraptor_print' => __('PDF (for print)', 'pressbooks'),
-        'docraptor' => __('PDF (for digital distribution)', 'pressbooks')
+        'docraptor_print' => __('PDF (for print)', 'pressbooks', 'pressbooks-docraptor'),
+        'docraptor' => __('PDF (for digital distribution)', 'pressbooks', 'pressbooks-docraptor')
     ] + $formats['standard'];
 
     unset($formats['standard']['pdf']);
