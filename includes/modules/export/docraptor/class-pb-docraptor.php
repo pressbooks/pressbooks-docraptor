@@ -157,7 +157,8 @@ class Docraptor extends Export
                             $_SESSION['pb_errors'][] = __('Your PDF could not be retrieved.', 'pressbooks-docraptor');
                             $retval = false;
                         } else {
-                            rename($result, $this->outputPath);
+                            copy($result, $this->outputPath);
+                            unlink($result);
                         }
                         $done = true;
                         $msg = $this->getDetailedLog($create_response->getStatusId());
