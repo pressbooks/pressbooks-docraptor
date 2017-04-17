@@ -132,11 +132,14 @@ class Docraptor extends Export
         try {
             $doc = new \DocRaptor\Doc();
             if (WP_ENV == 'development') {
+                $response = wp_remote_get($this->url);
+                $document_content = str_replace('</head>', "<style>$css</style></head>", $response['body']);
                 $doc->setTest(true);
+                $doc->setDocumentContent($document_content);
             } else {
                 $doc->setTest(false);
+                $doc->setDocumentUrl($this->url);
             }
-            $doc->setDocumentUrl($this->url);
             $doc->setName(get_bloginfo('name'));
             $doc->setPrinceOptions($prince_options);
             $create_response = $docraptor->createAsyncDoc($doc);
