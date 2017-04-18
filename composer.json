@@ -1,15 +1,47 @@
 {
     "name": "pressbooks/pressbooks-docraptor",
-    "description": "Docraptor exporter for Pressbooks.",
+    "license": "GPL-2.0+",
     "type": "wordpress-plugin",
+    "description": "Docraptor exporter for Pressbooks.",
+    "homepage": "https://github.com/pressbooks/pressbooks-docraptor",
+    "authors": [
+        {
+            "name": "Pressbooks (Book Oven Inc.)",
+            "email": "code@pressbooks.com",
+            "homepage": "https://pressbooks.org"
+        }
+    ],
+    "keywords": [
+      "ebooks",
+      "publishing",
+      "webbooks"
+    ],
+    "support": {
+      "email": "code@pressbooks.com",
+      "issues": "https://github.com/pressbooks/pressbooks-docraptor/issues",
+      "docs": "https://github.com/pressbooks/pressbooks-docraptor/#readme"
+    },
     "require": {
         "docraptor/docraptor": "^1.1",
         "composer/installers": "^1.2"
     },
     "require-dev": {
       "phpunit/phpunit": "~5.5",
-      "squizlabs/php_codesniffer": "^2.7",
-      "pressbooks/pressbooks": "3.9.8-RC3"
+      "squizlabs/php_codesniffer": "^2.7"
+    },
+    "archive" : {
+      "exclude": [
+        ".editorconfig",
+        ".gitignore",
+        ".phpstorm.meta.php",
+        ".travis.yml",
+        "codecov.yml",
+        "CODE_OF_CONDUCT.md",
+        "CONTRIBUTING.md",
+        "ISSUE_TEMPLATE.md",
+        "phpunit.xml",
+        "tests"
+      ]
     },
     "scripts": {
       "test": [
@@ -20,22 +52,5 @@
       "standards": [
         "vendor/bin/phpcs --standard=phpcs.xml $(find . -name '*.php')"
       ]
-    },
-    "autoload": {
-      "psr-4": {
-            "PressbooksDocraptor\\": "src/"
-        }
-    },
-    "extra": {
-      "installer-paths": {
-        "vendor/pressbooks/{$name}/": ["pressbooks/pressbooks"]
-      }
-    },
-    "license": "GPL-2.0+",
-    "authors": [
-        {
-            "name": "Pressbooks (Book Oven Inc.)",
-            "email": "code@pressbooks.com"
-        }
-    ]
+    }
 }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "36bd9a3bb8f73ddbd09d70706dfb83a9",
+    "content-hash": "83b7fd512efeff83faf2bc6893cf2903",
     "packages": [
         {
             "name": "composer/installers",
@@ -223,114 +223,17 @@
             "time": "2015-06-14T21:17:01+00:00"
         },
         {
-            "name": "gridonic/princexml-php",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gridonic/PrinceXMLPhp.git",
-                "reference": "ebacd18a97dd5a6f8f75876e7a781d46d7b7d6fc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gridonic/PrinceXMLPhp/zipball/ebacd18a97dd5a6f8f75876e7a781d46d7b7d6fc",
-                "reference": "ebacd18a97dd5a6f8f75876e7a781d46d7b7d6fc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "PrinceXMLPhp": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Gridonic",
-                    "homepage": "http://gridonic.ch"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/gridonic/PrinceXMLPhp/contributors"
-                }
-            ],
-            "description": "PrinceXML PHP5 wrapper converted to follow the PSR-0 standard.",
-            "keywords": [
-                "princexml",
-                "xml"
-            ],
-            "time": "2016-09-06T17:46:32+00:00"
-        },
-        {
-            "name": "leafo/scssphp",
-            "version": "v0.6.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leafo/scssphp.git",
-                "reference": "562213cd803e42ea53b0735554794c4022d8db89"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/562213cd803e42ea53b0735554794c4022d8db89",
-                "reference": "562213cd803e42ea53b0735554794c4022d8db89",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "kherge/box": "~2.5",
-                "phpunit/phpunit": "~3.7",
-                "squizlabs/php_codesniffer": "~2.5"
-            },
-            "bin": [
-                "bin/pscss"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Leafo\\ScssPhp\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Leaf Corcoran",
-                    "email": "leafot@gmail.com",
-                    "homepage": "http://leafo.net"
-                }
-            ],
-            "description": "scssphp is a compiler for SCSS written in PHP.",
-            "homepage": "http://leafo.github.io/scssphp/",
-            "keywords": [
-                "css",
-                "less",
-                "sass",
-                "scss",
-                "stylesheet"
-            ],
-            "time": "2017-02-23T05:07:33+00:00"
-        },
-        {
             "name": "myclabs/deep-copy",
-            "version": "1.6.0",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe"
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/5a5a9fc8025a08d8919be87d6884d5a92520cefe",
-                "reference": "5a5a9fc8025a08d8919be87d6884d5a92520cefe",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/8e6e04167378abf1ddb4d3522d8755c5fd90d102",
+                "reference": "8e6e04167378abf1ddb4d3522d8755c5fd90d102",
                 "shasum": ""
             },
             "require": {
@@ -359,49 +262,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2017-01-26T22:05:40+00:00"
-        },
-        {
-            "name": "perchten/rmrdir",
-            "version": "1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/perchten/php-rmrdir.git",
-                "reference": "ce8b95e509d64f339a10c3475a13ad687f1e6905"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/perchten/php-rmrdir/zipball/ce8b95e509d64f339a10c3475a13ad687f1e6905",
-                "reference": "ce8b95e509d64f339a10c3475a13ad687f1e6905",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/rmrdir.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alastair Brayne",
-                    "email": "al@perchten.co.uk",
-                    "homepage": "http://perchten.co.uk"
-                }
-            ],
-            "description": "Recusrive rmdir for PHP",
-            "homepage": "https://github.com/perchten/php-rmrdir",
-            "keywords": [
-                "dir",
-                "recursive",
-                "rm",
-                "rm -r",
-                "rmdir"
-            ],
-            "time": "2014-05-14T13:49:47+00:00"
+            "time": "2017-04-12T18:52:22+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -1001,153 +862,6 @@
                 "xunit"
             ],
             "time": "2016-12-08T20:27:08+00:00"
-        },
-        {
-            "name": "pimple/pimple",
-            "version": "v3.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/a30f7d6e57565a2e1a316e1baf2a483f788b258a",
-                "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pimple": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Pimple, a simple Dependency Injection Container",
-            "homepage": "http://pimple.sensiolabs.org",
-            "keywords": [
-                "container",
-                "dependency injection"
-            ],
-            "time": "2015-09-11T15:10:35+00:00"
-        },
-        {
-            "name": "pressbooks/pb-api",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pressbooks/pb-api.git",
-                "reference": "cb7da9e9871423a21992f274a522564d072c816a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pressbooks/pb-api/zipball/cb7da9e9871423a21992f274a522564d072c816a",
-                "reference": "cb7da9e9871423a21992f274a522564d072c816a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.5",
-                "squizlabs/php_codesniffer": "^2.7",
-                "wp-coding-standards/wpcs": "^0.10"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "pb-api.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Book Oven Inc.",
-                    "email": "code@pressbooks.com",
-                    "homepage": "https://pressbooks.com"
-                },
-                {
-                    "name": "Brad Payne",
-                    "email": "brad@bradpayne.ca",
-                    "homepage": "https://bradpayne.ca"
-                }
-            ],
-            "description": "This plugin provides a JSON-based REST API for Pressbooks, an open source book publishing tool built on the WordPress multisite platform.",
-            "homepage": "https://github.com/pressbooks/pressbooks",
-            "keywords": [
-                "ebooks publishing webbooks"
-            ],
-            "time": "2016-11-18T18:52:07+00:00"
-        },
-        {
-            "name": "pressbooks/pressbooks",
-            "version": "3.9.8-RC3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pressbooks/pressbooks.git",
-                "reference": "1cb46bee7a0b62b361b802c6d75e84e6f3666249"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pressbooks/pressbooks/zipball/1cb46bee7a0b62b361b802c6d75e84e6f3666249",
-                "reference": "1cb46bee7a0b62b361b802c6d75e84e6f3666249",
-                "shasum": ""
-            },
-            "require": {
-                "composer/installers": "~1.0",
-                "gridonic/princexml-php": "^1.2",
-                "leafo/scssphp": "^0.6.7",
-                "perchten/rmrdir": "^1.0",
-                "php": ">=5.6.0",
-                "pimple/pimple": "^3.0",
-                "pressbooks/pb-api": "^1.1",
-                "vanilla/htmlawed": "^2.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~5.5",
-                "squizlabs/php_codesniffer": "^2.7",
-                "wp-coding-standards/wpcs": "^0.10"
-            },
-            "type": "wordpress-plugin",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Book Oven Inc.",
-                    "email": "code@pressbooks.com",
-                    "homepage": "https://pressbooks.com"
-                }
-            ],
-            "description": "Pressbooks is an open source book publishing tool built on a WordPress multisite platform. Pressbooks outputs books in multiple formats, including PDF, EPUB, MOBI, web, and a variety of XML flavours, using a theming/templating system, driven by CSS.",
-            "homepage": "https://github.com/pressbooks/pressbooks",
-            "keywords": [
-                "ebooks",
-                "publishing",
-                "webbooks"
-            ],
-            "time": "2017-04-06T16:58:37+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -1796,45 +1510,6 @@
             "time": "2017-03-20T09:45:15+00:00"
         },
         {
-            "name": "vanilla/htmlawed",
-            "version": "v2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/vanilla/htmlawed.git",
-                "reference": "282b1c939f321b1694dc4d5f2c5da2158293578c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/vanilla/htmlawed/zipball/282b1c939f321b1694dc4d5f2c5da2158293578c",
-                "reference": "282b1c939f321b1694dc4d5f2c5da2158293578c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "tburry/pquery": "~1.0.1"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/Htmlawed.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Todd Burry",
-                    "email": "todd@vanillaforums.com"
-                }
-            ],
-            "description": "A composer wrapper for the htmLawed library to purify & filter HTML. Tested with PHPUnit and PhantomJS!",
-            "time": "2017-03-28T18:39:10+00:00"
-        },
-        {
             "name": "webmozart/assert",
             "version": "1.2.0",
             "source": {
@@ -1887,9 +1562,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "pressbooks/pressbooks": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
