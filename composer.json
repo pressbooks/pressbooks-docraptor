@@ -1,56 +1,55 @@
 {
-    "name": "pressbooks/pressbooks-docraptor",
-    "license": "GPL-2.0+",
-    "type": "wordpress-plugin",
-    "description": "Docraptor exporter for Pressbooks.",
-    "homepage": "https://github.com/pressbooks/pressbooks-docraptor",
-    "authors": [
-        {
-            "name": "Pressbooks (Book Oven Inc.)",
-            "email": "code@pressbooks.com",
-            "homepage": "https://pressbooks.org"
-        }
-    ],
-    "keywords": [
-      "ebooks",
-      "publishing",
-      "webbooks"
-    ],
-    "support": {
+  "name": "pressbooks/pressbooks-docraptor",
+  "license": "GPL-2.0+",
+  "type": "wordpress-plugin",
+  "description": "Docraptor exporter for Pressbooks.",
+  "homepage": "https://github.com/pressbooks/pressbooks-docraptor",
+  "authors": [
+    {
+      "name": "Pressbooks (Book Oven Inc.)",
       "email": "code@pressbooks.com",
-      "issues": "https://github.com/pressbooks/pressbooks-docraptor/issues",
-      "docs": "https://github.com/pressbooks/pressbooks-docraptor/#readme"
-    },
-    "require": {
-        "docraptor/docraptor": "^1.1",
-        "composer/installers": "^1.2"
-    },
-    "require-dev": {
-      "phpunit/phpunit": "~5.5",
-      "squizlabs/php_codesniffer": "^2.7"
-    },
-    "archive" : {
-      "exclude": [
-        ".editorconfig",
-        ".gitignore",
-        ".phpstorm.meta.php",
-        ".travis.yml",
-        "codecov.yml",
-        "CODE_OF_CONDUCT.md",
-        "CONTRIBUTING.md",
-        "ISSUE_TEMPLATE.md",
-        "phpunit.xml",
-        "tests"
-      ]
-    },
-    "scripts": {
-      "test": [
-        "/usr/bin/xmllint --version",
-        "vendor/bin/phpunit --configuration phpunit.xml  --coverage-clover coverage.xml",
-        "vendor/bin/phpcs --standard=phpcs.xml $(find . -name '*.php')"
-      ],
-      "standards": [
-        "vendor/bin/phpcs --standard=phpcs.xml $(find . -name '*.php')"
-      ]
+      "homepage": "https://pressbooks.org"
     }
+  ],
+  "keywords": [
+    "ebooks",
+    "publishing",
+    "webbooks"
+  ],
+  "support": {
+    "email": "code@pressbooks.com",
+    "issues": "https://github.com/pressbooks/pressbooks-docraptor/issues",
+    "docs": "https://github.com/pressbooks/pressbooks-docraptor/#readme"
+  },
+  "require": {
+    "docraptor/docraptor": "^1.1",
+    "composer/installers": "^1.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.5",
+    "humanmade/coding-standards": "^0.2.1"
+  },
+  "archive": {
+    "exclude": [
+      ".editorconfig",
+      ".gitignore",
+      ".phpstorm.meta.php",
+      ".travis.yml",
+      "codecov.yml",
+      "CODE_OF_CONDUCT.md",
+      "CONTRIBUTING.md",
+      "ISSUE_TEMPLATE.md",
+      "phpunit.xml",
+      "tests"
+    ]
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpunit --configuration phpunit.xml --coverage-clover coverage.xml",
+      "@standards"
+    ],
+    "standards": [
+      "vendor/bin/phpcs --standard=phpcs.ruleset.xml *.php inc/ bin/"
+    ]
+  }
 }

@@ -8,15 +8,10 @@
 /**
  * Docraptor test case.
  */
-class DocraptorTest extends WP_UnitTestCase // @codingStandardsIgnoreLine
-{
+class DocraptorTest extends WP_UnitTestCase {
 
-    /**
-     * @covers \PressbooksDocraptor\Modules\Export\DocRaptor\Docraptor::hasDependencies
-     */
-    public function testHasDependencies()
-    {
-        $return = \PressbooksDocraptor\Modules\Export\Docraptor\Docraptor::hasDependencies();
-        $this->assertInternalType('boolean', $return);
-    }
+	public function testHasDependencies() {
+		$return = \PressbooksDocraptor\Modules\Export\Docraptor\Docraptor::hasDependencies();
+		$this->assertInternalType( 'boolean', $return );
+	}
 }
