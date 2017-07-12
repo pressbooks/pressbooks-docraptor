@@ -1,8 +1,8 @@
 === DocRaptor for Pressbooks ===
 Tags: ebooks, publishing
-Requires at least: 4.7.3
-Tested up to: 4.7.3
-Stable tag: 1.2.0
+Requires at least: 4.8
+Tested up to: 4.8
+Stable tag: 2.0.0
 License: GPLv2
 License URI: https://raw.githubusercontent.com/pressbooks/pressbooks-docraptor/master/LICENSE.md
 
@@ -19,8 +19,8 @@ This plugin implements a [DocRaptor](https://docraptor.com/) export module for [
 = Requirements =
 
 * PHP >= 5.6
-* Pressbooks >= 3.9.8
-* WordPress >= 4.7.3
+* Pressbooks >= 4.0.0
+* WordPress >= 4.8
 
 = Installing =
 
@@ -43,6 +43,9 @@ Set the constant `WP_ENV` to `staging` or `production` to disable [test mode](ht
 DocRaptor for Pressbooks supports [Github Updater](https://github.com/afragen/github-updater).
 
 == Changelog ==
+
+= 2.0.0 =
+* Human Made Coding standards, other improvements.
 
 = 1.2.0 =
 * Changed to network-only plugin.

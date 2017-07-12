@@ -1,8 +1,8 @@
 # DocRaptor for Pressbooks #
 **Tags:** ebooks, publishing  
-**Requires at least:** 4.8.0  
-**Tested up to:** 4.8.0  
-**Stable tag:** 1.2.0  
+**Requires at least:** 4.8  
+**Tested up to:** 4.8  
+**Stable tag:** 2.0.0  
 **License:** GPLv2  
 **License URI:** https://raw.githubusercontent.com/pressbooks/pressbooks-docraptor/master/LICENSE.md  
 
@@ -20,7 +20,7 @@ This plugin implements a [DocRaptor](https://docraptor.com/) export module for [
 
 * PHP >= 5.6
 * Pressbooks >= 4.0.0
-* WordPress >= 4.8.0
+* WordPress >= 4.8
 
 ### Installing ###
 
@@ -45,8 +45,7 @@ DocRaptor for Pressbooks supports [Github Updater](https://github.com/afragen/gi
 ## Changelog ##
 
 ### 2.0.0 ###
-* Human Made coding standards
-* Refactoring 
+* Human Made Coding standards, other improvements.
 
 ### 1.2.0 ###
 * Changed to network-only plugin.
