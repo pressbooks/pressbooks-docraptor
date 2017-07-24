@@ -101,11 +101,15 @@ class Docraptor extends \Pressbooks\Modules\Export\Prince\Pdf {
 							$retval = $this->outputPath;
 						}
 						$done = true;
-						$msg = $this->getDetailedLog( $create_response->getStatusId() );
-						file_put_contents( $this->logfile, $msg );
+						$exportoptions = get_option( 'pressbooks_export_options' );
+						if ( isset( $exportoptions['email_validation_logs'] ) && 1 === absint( $exportoptions['email_validation_logs'] ) ) {
+							$msg = $this->getDetailedLog( $create_response->getStatusId() );
+							file_put_contents( $this->logfile, $msg );
+						}
 						break;
 					case 'failed':
-						file_put_contents( $this->logfile, $status_response );
+						$msg = $status_response;
+						file_put_contents( $this->logfile, $msg );
 						$done = true;
 						$retval = false;
 						break;
@@ -133,7 +137,8 @@ class Docraptor extends \Pressbooks\Modules\Export\Prince\Pdf {
 	 * @return string
 	 */
 	protected function getDetailedLog( $id ) {
-		$response = wp_remote_get( esc_url( 'https://docraptor.com/doc_logs.json?user_credentials=' . DOCRAPTOR_API_KEY ) );
+		// @see: https://docraptor.com/documentation/api#doc_log_listing
+		$response = wp_remote_get( esc_url( 'https://docraptor.com/doc_logs.json?per_page=25&user_credentials=' . DOCRAPTOR_API_KEY ) );
 		$logs = json_decode( $response['body'] );
 		if ( $logs ) {
 			foreach ( $logs as $log ) {
