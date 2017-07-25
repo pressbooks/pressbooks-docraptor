@@ -1,33 +1,42 @@
 language: php
-
 notifications:
   email:
     on_success: never
     on_failure: change
-
 branches:
   only:
-    - dev
-
+  - dev
+  - "/\\d+\\.\\d+(\\.\\d+)?(-\\S*)?$/"
 php:
-  - 5.6
-  - 7.0
-  - 7.1
-
+- 5.6
+- 7.0
+- 7.1
 env:
-  - WP_VERSION=latest WP_MULTISITE=1
-
+- WP_VERSION=latest WP_MULTISITE=1
 before_install:
-  - composer install
-
+- composer install
 before_script:
-  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
-  - git clone --depth=1 https://github.com/pressbooks/pressbooks.git ../pressbooks
-  - cd ../pressbooks && composer install --no-dev
-  - cd ../pressbooks-docraptor
-
+- bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+- git clone --depth=1 https://github.com/pressbooks/pressbooks.git ../pressbooks
+- cd ../pressbooks && composer install --no-dev
+- cd ../pressbooks-docraptor
 script:
-  - composer test
-
+- composer test
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
+before_deploy:
+- composer install --no-dev
+- cd ../
+- zip -9 -ry pressbooks-docraptor-$TRAVIS_TAG.zip ../pressbooks-docraptor
+  -x *.git* *bin/\* *node_modules/\* *tests/\* *.editorconfig* *.gitattributes*
+  *.github* *.gitignore* *.travis.yml* *phpcs.ruleset.xml* *phpunit.xml* *yarn.lock*
+- mv pressbooks-docraptor-$TRAVIS_TAG.zip pressbooks-docraptor/pressbooks-docraptor-$TRAVIS_TAG.zip
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: NzQ09WQmKvlqhEkkzZ06upUA+AdJT+tLX0Uom8S83UsWW+UcOcsjCQzNmUTYBOMAgPqkVOHrd9dL4yEteunLKTx5QlIhjM4n4u+0VRgJYQeKI1kuMUEM1jJbNQl+Y1NzTlufyKoLCuNtd++GlWNi70z8bqgY0B5Bkr0QO1haSR5LxXJj6wVpApLBjO8AP2MNbB4oE+hOzwUqqfTYISLRBcjLc/U7T6EcTddiBYFOTodjoYDNBSZLGN8D8hlZ4ynWGouJH21xARwpL43dswsrgDlF/yX23OuLWLtoGWDqwrVBzp3E/RwqoVP0PdziQETNrRoEwFzus+zQobPaUAjIuiAG+mXXsYeAczcdnapSaX7DzmiYTyAYe22H5ZBy3ofwVa7myr+/UjQOUk8IOJP7CuzFakph+dWjJcmEpRl5qHm59RTnlNnSlGyrXx/uZ5hakXwZlSp7m7rqguWT0ANeYO5Ze3vDOXaKaPHWAzx/FcjiD+LtZDUkyYitnQTXI6TB2ppSz/N1qyHBoVwywSnAXZwcMPkbinxFbfIu0R+fw5n8D3gYI3bKk4jnEi2UX7+k+HCNB6/RD6dWZffWWsXx3g2evawqkBPbvJny+77GQj5dYUsfMa8pLN1BW1YWWDXTz/4lnZ/VGzHCQr2MpIjWyiBayL7H9bA++DnaJBA7BZs=
+  file: "pressbooks-docraptor-$TRAVIS_TAG.zip"
+  on:
+    tags: true
+    repo: pressbooks/pressbooks-docraptor

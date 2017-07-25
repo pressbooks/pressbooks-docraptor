@@ -3,7 +3,7 @@
 Plugin Name: Docraptor for Pressbooks
 Plugin URI: https://pressbooks.org
 Description: Docraptor exporter for Pressbooks.
-Version: 2.0.0
+Version: 2.0.1
 Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
 Text Domain: pressbooks-docraptor
@@ -63,4 +63,3 @@ add_action( 'init', function () {
 	add_filter( 'pb_theme_options_tabs', '\PressbooksDocraptor\Filters\register_pdf_options_tab' );
 	add_filter( 'pb_active_export_modules', '\PressbooksDocraptor\Filters\add_to_modules' );
 } );
-

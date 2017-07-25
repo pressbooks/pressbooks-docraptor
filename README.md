@@ -2,7 +2,7 @@
 **Tags:** ebooks, publishing  
 **Requires at least:** 4.8  
 **Tested up to:** 4.8  
-**Stable tag:** 2.0.0  
+**Stable tag:** 2.0.1  
 **License:** GPLv2  
 **License URI:** https://raw.githubusercontent.com/pressbooks/pressbooks-docraptor/master/LICENSE.md  
 
@@ -43,6 +43,9 @@ Set the constant `WP_ENV` to `staging` or `production` to disable [test mode](ht
 DocRaptor for Pressbooks supports [Github Updater](https://github.com/afragen/github-updater).
 
 ## Changelog ##
+
+### 2.0.1 ###
+* Only fetch DocRaptor log when required (#14).
 
 ### 2.0.0 ###
 * Human Made Coding standards, other improvements.
