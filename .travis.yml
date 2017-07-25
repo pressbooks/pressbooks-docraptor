@@ -30,7 +30,8 @@ before_deploy:
 - cd ../
 - zip -9 -ry $TRAVIS_BUILD_DIR/$TRAVIS_PROJECT_SLUG-$TRAVIS_TAG.zip $TRAVIS_PROJECT_SLUG
   -x *.git* *bin/\* *node_modules/\* *tests/\* *.editorconfig* *.gitattributes*
-  *.github* *.gitignore* *.travis.yml* *phpcs.ruleset.xml* *phpunit.xml* *yarn.lock*
+  *.github* *.gitignore* *.travis.yml* *codecov.yml* *coverage.xml* *Gruntfile.js*
+  *phpcs.ruleset.xml* *phpunit.xml* *yarn.lock*
 - cd $TRAVIS_BUILD_DIR
 deploy:
   provider: releases
