@@ -14,6 +14,7 @@ class DocraptorPrint extends Docraptor {
 	 */
 	public function __construct( array $args ) {
 		parent::__construct( $args );
+		$this->url .= '&fullsize-images=1';
 	}
 
 	/**
