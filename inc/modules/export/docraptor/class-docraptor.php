@@ -65,6 +65,7 @@ class Docraptor extends \Pressbooks\Modules\Export\Prince\Pdf {
 
 		$docraptor = new \DocRaptor\DocApi();
 		$prince_options = new \DocRaptor\PrinceOptions();
+		$prince_options->setNoCompress( false );
 		$prince_options->setProfile( $this->pdfProfile );
 		$retval = false;
 
