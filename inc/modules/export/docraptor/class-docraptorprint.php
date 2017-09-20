@@ -44,4 +44,20 @@ class DocraptorPrint extends Docraptor {
 	protected function getPdfOutputIntent() {
 		return plugins_url( 'pressbooks-docraptor/assets/icc/USWebCoatedSWOP.icc' );
 	}
+
+
+	/**
+	 * Override based on Theme Options
+	 */
+	protected function themeOptionsOverrides() {
+
+		parent::themeOptionsOverrides();
+
+		// Output Intent
+		$icc = $this->pdfOutputIntent;
+		if ( ! empty( $icc ) ) {
+			$this->cssOverrides .= "\n" . "@prince-pdf { prince-pdf-output-intent: url('$icc'); } \n";
+		}
+
+	}
 }
