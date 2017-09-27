@@ -1,8 +1,11 @@
 === DocRaptor for Pressbooks ===
-Tags: ebooks, publishing
-Requires at least: 4.8
-Tested up to: 4.8
+
+Version: 2.0.1
 Stable tag: 2.0.1
+Tags: ebooks, publishing
+Requires PHP: 5.6
+Requires at least: 4.8.1
+Tested up to: 4.8.1
 License: GPLv2
 License URI: https://raw.githubusercontent.com/pressbooks/pressbooks-docraptor/master/LICENSE.md
 
