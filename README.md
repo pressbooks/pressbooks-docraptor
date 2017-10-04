@@ -48,7 +48,7 @@ DocRaptor for Pressbooks require Pressbooks >= 4.3.3.
 ## Changelog ##
 
 ### 2.1 ###
-* **[CORE ENHANCEMENT]** The Pressbooks plugin is now self-updating — GitHub Updater is no longer required (see #19, #20, and #21).
+* **[CORE ENHANCEMENT]** The DocRaptor for Pressbooks plugin is now self-updating — GitHub Updater is no longer required (see #19, #20, and #21).
 
 ### 2.0.1 ###
 * Only fetch DocRaptor log when required (#14).
