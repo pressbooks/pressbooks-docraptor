@@ -11,20 +11,17 @@
       "homepage": "https://pressbooks.org"
     }
   ],
-  "keywords": [
-    "ebooks",
-    "publishing",
-    "webbooks"
-  ],
+  "keywords": ["ebooks", "publishing", "webbooks"],
   "support": {
     "email": "code@pressbooks.com",
     "issues": "https://github.com/pressbooks/pressbooks-docraptor/issues",
     "docs": "https://github.com/pressbooks/pressbooks-docraptor/#readme"
   },
   "require": {
+    "php": ">=7.0",
     "docraptor/docraptor": "^1.1",
     "composer/installers": "^1.3",
-    "yahnis-elsts/plugin-update-checker": "^4.2"
+    "yahnis-elsts/plugin-update-checker": "^4.3"
   },
   "require-dev": {
     "phpunit/phpunit": "~5.5",

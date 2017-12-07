@@ -8,6 +8,7 @@ Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
 Text Domain: pressbooks-docraptor
 License: GPLv2
+Requires PHP: 7.0
 Network: true
 */
 
@@ -56,7 +57,7 @@ require( __DIR__ . '/inc/filters/namespace.php' );
 // -------------------------------------------------------------------------------------------------------------------
 
 if ( ! \Pressbooks\Book::isBook() ) {
-	$updater = new \Puc_v4p2_Vcs_PluginUpdateChecker(
+	$updater = new \Puc_v4p3_Vcs_PluginUpdateChecker(
 		new \Pressbooks\Updater( 'https://github.com/pressbooks/pressbooks-docraptor/' ),
 		__FILE__, // Fully qualified path to the main plugin file
 		'pressbooks-docraptor',

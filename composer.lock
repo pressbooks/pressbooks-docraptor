@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1d014031a64236dc28a0f879c19fd93",
+    "content-hash": "179b52aea64c4b9e1849df07ef8272d6",
     "packages": [
         {
             "name": "composer/installers",
@@ -175,16 +175,16 @@
         },
         {
             "name": "yahnis-elsts/plugin-update-checker",
-            "version": "v4.2",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/YahnisElsts/plugin-update-checker.git",
-                "reference": "846d11194719111c94296dabcf97a86e95b69449"
+                "reference": "22fd23a32b158ac051f09690c757f5fe509d21aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/846d11194719111c94296dabcf97a86e95b69449",
-                "reference": "846d11194719111c94296dabcf97a86e95b69449",
+                "url": "https://api.github.com/repos/YahnisElsts/plugin-update-checker/zipball/22fd23a32b158ac051f09690c757f5fe509d21aa",
+                "reference": "22fd23a32b158ac051f09690c757f5fe509d21aa",
                 "shasum": ""
             },
             "require": {
@@ -216,7 +216,7 @@
                 "theme updates",
                 "wordpress"
             ],
-            "time": "2017-07-21T11:27:31+00:00"
+            "time": "2017-11-03T17:20:11+00:00"
         }
     ],
     "packages-dev": [
