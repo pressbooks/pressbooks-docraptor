@@ -57,13 +57,14 @@ require( __DIR__ . '/inc/filters/namespace.php' );
 // -------------------------------------------------------------------------------------------------------------------
 
 if ( ! \Pressbooks\Book::isBook() ) {
-	$updater = new \Puc_v4p3_Vcs_PluginUpdateChecker(
-		new \Pressbooks\Updater( 'https://github.com/pressbooks/pressbooks-docraptor/' ),
+	$updater = Puc_v4_Factory::buildUpdateChecker(
+		'https://github.com/pressbooks/pressbooks-docraptor/',
 		__FILE__, // Fully qualified path to the main plugin file
 		'pressbooks-docraptor',
 		24
 	);
 	$updater->setBranch( 'master' );
+	$updater->getVcsApi()->enableReleaseAssets();
 }
 
 // -------------------------------------------------------------------------------------------------------------------
