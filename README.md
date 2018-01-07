@@ -42,6 +42,7 @@ Set the constant `WP_ENV` to `staging` or `production` to disable [test mode](ht
 ```define(\'WP_ENV\', \'production\');```
 
 ## Upgrade Notice ##
+### 2.2.0 ###
 
 DocRaptor for Pressbooks 2.2 requires Pressbooks 5.0 and PHP >= 7.0.
 
