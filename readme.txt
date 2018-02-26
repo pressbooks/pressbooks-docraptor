@@ -4,8 +4,9 @@ Version: 2.2.0
 Stable tag: 2.2.0
 Tags: ebooks, publishing
 Requires PHP: 7.0
-Requires at least: 4.9.1
-Tested up to: 4.9.1
+Requires at least: 4.9.4
+Tested up to: 4.9.4
+Pressbooks tested up to: 5.0.0
 License: GPLv2
 License URI: https://raw.githubusercontent.com/pressbooks/pressbooks-docraptor/master/LICENSE.md
 

@@ -1,6 +1,6 @@
 {
   "name": "pressbooks/pressbooks-docraptor",
-  "license": "GPL-2.0+",
+  "license": "GPL-2.0-or-later",
   "type": "wordpress-plugin",
   "description": "Docraptor exporter for Pressbooks.",
   "homepage": "https://github.com/pressbooks/pressbooks-docraptor",
