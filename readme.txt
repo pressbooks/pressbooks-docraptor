@@ -43,14 +43,17 @@ Set the constant `WP_ENV` to `staging` or `production` to disable [test mode](ht
 ```define(\'WP_ENV\', \'production\');```
 
 == Upgrade Notice ==
-== 2.2.0 ==
+== 2.2.1 ==
 
-DocRaptor for Pressbooks 2.2 requires Pressbooks 5.0 and PHP >= 7.0.
+DocRaptor for Pressbooks 2.2.1 requires Pressbooks 5.0 and PHP >= 7.0.
 
 == Changelog ==
 = 2.2.1=
 
+**Patches**
 
+- Updated license: [bc113bb](https://github.com/pressbooks/pressbooks-docraptor/commit/bc113bb)
+- Update Pressbooks tested up to version: [bc113bb](https://github.com/pressbooks/pressbooks-docraptor/commit/bc113bb)
 
 = 2.2 =
 **NOTICE:** Version 2.2 requires Pressbooks 5.0 and PHP >= 7.0.
