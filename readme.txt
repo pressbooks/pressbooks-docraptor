@@ -52,7 +52,7 @@ DocRaptor for Pressbooks 2.2.1 requires Pressbooks 5.0 and PHP >= 7.0.
 
 **Patches**
 
-- Updated license: [bc113bb](https://github.com/pressbooks/pressbooks-docraptor/commit/bc113bb)
+- Update license: [b15c31c](https://github.com/pressbooks/pressbooks-docraptor/commit/b15c31c)
 - Update Pressbooks tested up to version: [bc113bb](https://github.com/pressbooks/pressbooks-docraptor/commit/bc113bb)
 
 = 2.2 =
