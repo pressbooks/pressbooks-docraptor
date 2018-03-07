@@ -1,12 +1,12 @@
 === DocRaptor for Pressbooks ===
 
-Version: 2.2.0
-Stable tag: 2.2.0
+Version: 2.2.1
+Stable tag: 2.2.1
 Tags: ebooks, publishing
 Requires PHP: 7.0
 Requires at least: 4.9.4
 Tested up to: 4.9.4
-Pressbooks tested up to: 5.0.0
+Pressbooks tested up to: 5.0.2
 License: GPLv2
 License URI: https://raw.githubusercontent.com/pressbooks/pressbooks-docraptor/master/LICENSE.md
 
@@ -48,6 +48,9 @@ Set the constant `WP_ENV` to `staging` or `production` to disable [test mode](ht
 DocRaptor for Pressbooks 2.2 requires Pressbooks 5.0 and PHP >= 7.0.
 
 == Changelog ==
+= 2.2.1=
+
+
 
 = 2.2 =
 **NOTICE:** Version 2.2 requires Pressbooks 5.0 and PHP >= 7.0.

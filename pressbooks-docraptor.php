@@ -3,13 +3,13 @@
 Plugin Name: Docraptor for Pressbooks
 Plugin URI: https://pressbooks.org
 Description: Docraptor exporter for Pressbooks.
-Version: 2.2.0
+Version: 2.2.1
 Author: Pressbooks (Book Oven Inc.)
 Author URI: https://pressbooks.org
 Text Domain: pressbooks-docraptor
-License: GPLv2
+License: GPLv3 or later
 Requires PHP: 7.0
-Pressbooks tested up to: 5.0.0
+Pressbooks tested up to: 5.0.2
 Network: true
 */
 

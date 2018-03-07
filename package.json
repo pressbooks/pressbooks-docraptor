@@ -1,6 +1,6 @@
 {
   "name": "@pressbooks/pressbooks-docraptor",
-  "license": "gpl-2.0-or-later",
+  "license": "gpl-3.0-or-later",
   "main": "Gruntfile.js",
   "author": "Pressbooks (Book Oven Inc.) <code@pressbooks.com>",
   "devDependencies": {
